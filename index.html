@@ -1,9 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
   <head>
-    <link rel="stylesheet" href="index.css" />
+  	<title>AMANDA | SING UP</title>
+
+    <meta charset="utf-8">
+
+      <link rel="stylesheet" href="index.css">
+
+      <script type="text/javascript">
+        /*MÁSCARA TELEFONE*/
+          function fMasc(objeto,mascara) {
+            obj=objeto
+            masc=mascara
+            setTimeout("fMascEx()",1)
+          }
+
+          function fMascEx() {
+            obj.value=masc(obj.value)
+          }
+
+          function mTel(tel) {
+            tel=tel.replace(/\D/g,"")
+            tel=tel.replace(/^(\d)/,"($1")
+            tel=tel.replace(/(.{3})(\d)/,"$1)$2")
+              if(tel.length == 9) {
+                tel=tel.replace(/(.{1})$/,"-$1")
+                 } else if (tel.length == 10) {
+                tel=tel.replace(/(.{2})$/,"-$1")
+                  } else if (tel.length == 11) {
+                tel=tel.replace(/(.{3})$/,"-$1")
+                 } else if (tel.length == 12) {
+                tel=tel.replace(/(.{4})$/,"-$1")
+                  } else if (tel.length > 12) {
+                tel=tel.replace(/(.{4})$/,"-$1")
+                }
+              return tel;
+          }
+
+          /*VALIDAR SENHA*/
+            function validarSenha() {
+              var senha1 = document.getElementById("senha");
+              var senha2 = document.getElementById("senhaTemp");
+              var s1 = senha1.value;
+              var s2 = senha2.value;
+                if (s1 == s2) {
+                  alert("Dados Cadastrados");
+                    return true;
+                    } else {
+                  alert("Senhas não batem. Verifique o valor digitado.");
+                    return false;
+                    }
+            }
+
+          /*BOTÃO GOOGLE*/
+
+      </script>
   </head>
+
   <body>
-    <!-- escreva seu codigo aqui -->
+    <!--box-->
+  	<div id="login-box">
+      <!--picture side-->
+  		<div class="right-box"> 
+        <img src="imagens/hi.jpg">
+  		</div>
+      <!--REGISTER SIDE-->
+  		<div class="left-box">
+        <h1>Create an account!</h1>  
+      		<form name="forms">
+      			<input type="text" name="name" placeholder="Name" required>
+      			<input type="tel" name="phone" maxlength="14" placeholder="Phone Number" onkeydown="javascript: fMasc(this, mTel);" required>
+      			<input type="email" name="email" placeholder="Email" required>
+      			<input type="password" name="password" maxlength="10" id="senha" placeholder="Password" required>
+      			<input type="password" name="password" maxlength="10" id="senhaTemp" placeholder="Repeat Password" onblur="return validarSenha()" required>
+      			<input type="submit" name="login-btn" value="Register Account" onkeydown="return validarSenha();"
+            onclick="return validar_forms();">
+      		</form> 
+          <hr>
+            <button class="social-google">Register with Google +</button>
+          <br>
+            <button class="social-face">Register with Facebook</button>
+          <hr>
+            <a href="">Forgot your password? Click here.</a><br>
+            <a href="">Already have an account? Login here!</a>
+  		</div>
+  	</div>
+  	
   </body>
 </html>
