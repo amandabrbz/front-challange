@@ -53,6 +53,20 @@
                     }
             }
 
+            /**VALIDAR DADOS**/
+              function mostrarCampos() {
+                var texto = "Dados cadastrados com sucesso! \n";
+                var elementos = document.getElementById("forms");
+                  for (i = 0; i < (elementos.length - 2); i++ ) {
+                var valor = elementos.elements[i].value;
+                  if (!valor) {
+                    return false;
+                  }
+              texto = texto + elementos.elements[i].name+ ": " + valor + "\n";
+                }
+                alert(texto);
+              }
+
           /*BOTÃO GOOGLE*/
 
       </script>
